@@ -1,5 +1,7 @@
 #pragma once
 #include "common.h"
+#include <ext/hash_map>
+using namespace __gnu_cxx;
 
 /*******************************************************************************
                                    扫描器
@@ -47,7 +49,7 @@ class Keywords{
     //hash函数
     struct string_hash{
         size_t operator()(const string& str) const{
-            return __st1_hash_string(str.c_str());
+            return __stl_hash_string(str.c_str());
         }
-    }
+    };
 };
