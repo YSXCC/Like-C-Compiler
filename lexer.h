@@ -1,6 +1,6 @@
 #pragma once
 #include "common.h"
-#include <ext/hash_map>
+#include <ext/hash_map>         //linux环境
 using namespace __gnu_cxx;
 
 /*******************************************************************************
