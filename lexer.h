@@ -17,16 +17,17 @@ private:
 
     //内部状态
     static const int BUFFERLENTH = 80;    //缓冲区长度设置为80
-    char line[BUFFERLENTH];
-    int lineLenth;      //当前行长度
-    int readPosition;   //当前读取的位置
-    char lastChar;      //上一个字符，用于判断换行位置
+    char line[BUFFERLENTH];     //缓冲区数组
+    int lineLenth;              //当前行长度
+    int readPosition;           //当前读取的位置
+    char lastChar;              //上一个字符，用于判断换行位置
 
     //读取状态
+
     int lineNum;        //记录行号
     int colNum;         //记录列号
 
-    void showChar();    //显示字符
+    void showChar(char ch);    //显示字符
 
 public:
 
@@ -48,6 +49,7 @@ public:
                                    关键字表
 *******************************************************************************/
 class Keywords{
+private:
     //hash函数
     //linux下的Hash函数
     // struct string_hash{
@@ -55,7 +57,30 @@ class Keywords{
     //         return __stl_hash_string(str.c_str());
     //     }
     // };   
-    //hash_map<string,symbol,string_hash> keywords;
+    //hash_map<string,Tag,string_hash> keywords;
 
-    unordered_map<string,symbol> keywords;
+    unordered_map<string,Tag> keywords;
+public:
+    Keywords();                 //关键字初始化
+    Tag getTag(string name);    //判断是否为关键字
+};
+
+
+/*******************************************************************************
+                                   词法分析器
+*******************************************************************************/
+class Lexer{
+private:
+    static Keywords keywords;   //关键字表
+
+    Scanner &scnner;            //扫描器
+    char chInput;               //读入的字符
+    bool scan(char need);       //封装的扫描方法，用于处理预读字符
+
+    Token* token;               //记录扫描到的词法记号
+
+public:
+    Lexer(Scanner & sc);
+    ~Lexer();
+    Token* tokenize();          //有穷自动机，词法记号解析
 };

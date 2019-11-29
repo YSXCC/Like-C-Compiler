@@ -13,7 +13,7 @@ using namespace std;
 /*
 	词法记号标签
 */
-enum symbol
+enum Tag
 {
     ERR,       //错误，异常
     END,       //文件结束标志符
@@ -51,3 +51,6 @@ enum LexError
 	COMMENT_NO_END,			//多行注释没有正常结束
 	TOKEN_NO_EXIST			//不存在的词法记号
 };
+
+class Token;				//词法记号类
+class Scanner;				//扫描器
