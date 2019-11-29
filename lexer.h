@@ -1,7 +1,9 @@
 #pragma once
 #include "common.h"
-#include <ext/hash_map>         //linux环境
-using namespace __gnu_cxx;
+#include <unordered_map>           //C++11标准库
+using namespace std;
+// #include <ext/hash_map>         //linux环境
+// using namespace __gnu_cxx;
 
 /*******************************************************************************
                                    扫描器
@@ -47,9 +49,13 @@ public:
 *******************************************************************************/
 class Keywords{
     //hash函数
-    struct string_hash{
-        size_t operator()(const string& str) const{
-            return __stl_hash_string(str.c_str());
-        }
-    };
+    //linux下的Hash函数
+    // struct string_hash{
+    //     size_t operator()(const string& str) const{
+    //         return __stl_hash_string(str.c_str());
+    //     }
+    // };   
+    //hash_map<string,symbol,string_hash> keywords;
+
+    unordered_map<string,symbol> keywords;
 };
