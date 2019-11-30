@@ -11,3 +11,16 @@ public:
 	static bool showSymbol;     //显示符号表
 };
 
+/*
+	编译器类
+*/
+class Compiler
+{
+
+public:
+	//词法分析测试
+	void lexerTest(char * file);
+	//核心函数
+	//void compile(char*file);//编译一个文件
+};
+

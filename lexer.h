@@ -73,9 +73,9 @@ class Lexer{
 private:
     static Keywords keywords;   //关键字表
 
-    Scanner &scnner;            //扫描器
+    Scanner &scanner;           //扫描器
     char chInput;               //读入的字符
-    bool scan(char need);       //封装的扫描方法，用于处理预读字符
+    bool scan(char need = 0);       //封装的扫描方法，用于处理预读字符
 
     Token* token;               //记录扫描到的词法记号
 
