@@ -7,9 +7,8 @@ using namespace std;
 
 int main(int argc,char *argv[])
 {
-    char x[] = "test.c";
-     char * file = x;
-    cout<<file<<endl;
+    char* file = argv[1];
+    cout<<"处理的文件是："<<file<<endl;
     Compiler compiler;
     compiler.lexerTest(file);
     int error = Error::getErrorNum();
